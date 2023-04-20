@@ -37,7 +37,7 @@ namespace BankApp
 		{
 			get
 			{
-				return listCompte;
+				return (Compte)listCompte;
 			}
 
 			set
@@ -55,7 +55,8 @@ namespace BankApp
 		{
 			this.Nom = nom;
 			this.Prenom = prenom;
-			this.listCompte = new List<Compte>();
-		}
+			listCompte  = new List<Compte>();
+
+        }
 	}
 }
