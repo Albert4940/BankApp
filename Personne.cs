@@ -7,14 +7,55 @@ namespace BankApp
 		private string nom, prenom;
 		private IList<Compte> listCompte;
 		
+		public string Nom
+		{
+			get
+			{
+				return this.nom;
+			}
+
+			set
+			{
+				this.nom = value;
+			}
+		}
+
+		public string Prenom
+		{
+			get
+			{
+				return this.prenom;
+			}
+
+			set
+			{
+				this.prenom = value;
+			}
+		}
+
+		public Compte ListCompte
+		{
+			get
+			{
+				return listCompte;
+			}
+
+			set
+			{
+				this.listCompte.Add(value);
+			}
+		}
+
 		public void Afficher()
 		{
-			//Console.WriteLine("Nom : " + + "\nPrenom : " + );
+			Console.WriteLine("Nom : " + this.Nom + "\nPrenom : " + this.Prenom);
 		}
 	
-		Personne(string nom, string prenom)
+		public Personne(string nom, string prenom)
 		{
-			
+			this.Nom = nom;
+			this.Prenom = prenom;
+			this.listCompte = new List<Compte>();
 		}
 	}
 }
