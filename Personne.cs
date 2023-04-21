@@ -33,16 +33,17 @@ namespace BankApp
 			}
 		}
 
-		public Compte ListCompte
+		public IList<Compte> ListCompte
 		{
 			get
 			{
-				return listCompte;
+				return this.listCompte;
 			}
 
 			set
 			{
-				this.listCompte.Add(value);
+				this.listCompte = null;
+				this.listCompte = value;
 			}
 		}
 

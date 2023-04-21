@@ -5,10 +5,47 @@ namespace BankApp
 	public class Compte
 	{
 		private int numero;
-		private double montant;
+		private double solde;
 		private string type;
 		private IList<Transaction> listTransaction;
 
+		public double Solde
+		{
+			get
+			{
+				return this.solde;
+			}
+
+			set
+			{
+				this.solde = value;
+			}
+		}
+
+		public Transaction ListTransaction
+		{
+			get
+			{
+				return (Transaction)listTransaction;
+			}
+
+			set
+			{
+				this.listTransaction.Add(value);
+			}
+		}
+		public string Type
+		{
+			get
+			{
+				return this.type;
+			}
+
+			set
+			{
+				this.type = value;
+			}
+		}
 		public void Depot()
 		{
 			
@@ -17,12 +54,13 @@ namespace BankApp
 		public double DemanderUnMontant()
 		{
 			Console.WriteLine("Entrer le montant : ");
-			string montant = Console.ReadLine();
-			return Double.Parse(montant);
+			string solde = Console.ReadLine();
+			return Double.Parse(solde);
 		}
-		Compte(int numero, string type)
+		public Compte(string type, double solde)
 		{
-			
+			this.Solde = solde;
+			this.Type = type;
 		}
 	}
 }

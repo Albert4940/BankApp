@@ -4,17 +4,35 @@ namespace BankApp
 {
     public class Program
     {
+        public static Personne pers = InitialisationPersonne();
+        
+        public static Personne InitialisationPersonne()
+        {
+            Personne pers = new Personne("Albert", "Mary");
+            IList<Compte> listTemp = pers.ListCompte;
+            listTemp.Add(new Compte("courant", 5000));
+            listTemp.Add(new Compte("epargne", 9000));
+            pers.ListCompte = listTemp;
+            return pers; 
+        }
         private static void ChoixMenu(string strChoixMenu)
         {
 
                 switch (strChoixMenu)
                 {
                     case "I":
-                        Console.WriteLine(strChoixMenu);
-                        break;
+                        pers.Afficher();
+                    break;
 
                     case "CS":
-                        Console.WriteLine(strChoixMenu);
+                     foreach(Compte compte in pers.ListCompte)
+                        {
+                          if(compte.Type.Equals("courant"))
+                            {
+                                Console.WriteLine("Solde Compte Courant : " + compte.Solde);
+                                break;
+                            }
+                        }
                         break;
 
                     case "CD":
@@ -40,6 +58,9 @@ namespace BankApp
                         Console.WriteLine(strChoixMenu);
                     Environment.Exit(-1);
                         break;
+                default:
+                    Console.WriteLine("Mauvais choix !");
+                break;
                 }
 
         }
@@ -68,7 +89,9 @@ namespace BankApp
         }
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello !");
+            Console.WriteLine("Appuyez sur Entrée pour afficher le menu." + pers.ListCompte.Count);
+            string menu = Console.ReadLine();
+            Menu();
         }
     }
 }
