@@ -15,6 +15,20 @@ namespace BankApp
             pers.ListCompte = listTemp;
             return pers; 
         }
+
+        public static Compte RechercherUnCompteParType(IList<Compte> listCompte, string type)
+        {
+            foreach (Compte compte in listCompte)
+            {
+                if (compte.Type.Equals(type))
+                {
+                    return compte;
+                }
+            }
+            return null;
+        }
+
+
         private static void ChoixMenu(string strChoixMenu)
         {
 
@@ -25,35 +39,35 @@ namespace BankApp
                     break;
 
                     case "CS":
-                     foreach(Compte compte in pers.ListCompte)
-                        {
-                          if(compte.Type.Equals("courant"))
-                            {
-                                Console.WriteLine("Solde Compte Courant : " + compte.Solde);
-                                break;
-                            }
-                        }
+                        if(RechercherUnCompteParType(pers.ListCompte, "courant") != null)
+                         Console.WriteLine("Solde Compte Courant : " + RechercherUnCompteParType(pers.ListCompte,"courant").Solde);
+                                
                         break;
 
                     case "CD":
-                        Console.WriteLine(strChoixMenu);
+                        if(RechercherUnCompteParType(pers.ListCompte, "courant") != null)
+                             RechercherUnCompteParType(pers.ListCompte, "courant").Depot();                            
                         break;
 
                     case "CR":
-                        Console.WriteLine(strChoixMenu);
-                        break;
+                    if (RechercherUnCompteParType(pers.ListCompte, "courant") != null)
+                        RechercherUnCompteParType(pers.ListCompte, "courant").Retrait();
+                    break;
 
                     case "ES":
-                        Console.WriteLine(strChoixMenu);
-                        break;
+                    if (RechercherUnCompteParType(pers.ListCompte, "epargne") != null)
+                        Console.WriteLine("Solde Compte Epargne : " + RechercherUnCompteParType(pers.ListCompte, "epargne").Solde);
+                    break;
 
                     case "ED":
-                        Console.WriteLine(strChoixMenu);
+                    if (RechercherUnCompteParType(pers.ListCompte, "epargne") != null)
+                        RechercherUnCompteParType(pers.ListCompte, "epargne").Depot();
                         break;
 
                     case "ER":
-                        Console.WriteLine(strChoixMenu);
-                        break;
+                    if (RechercherUnCompteParType(pers.ListCompte, "epargne") != null)
+                        RechercherUnCompteParType(pers.ListCompte, "epargne").Retrait();
+                    break;
                     case "X":
                         Console.WriteLine(strChoixMenu);
                     Environment.Exit(-1);
@@ -68,6 +82,9 @@ namespace BankApp
         {
             while(true)
             {
+                Console.WriteLine("Appuyez sur Entrée pour afficher le menu." + pers.ListCompte.Count);
+                string menu = Console.ReadLine();
+
                 Console.WriteLine("Veuillez sélectionner une option ci-dessous :");
 
                 Console.WriteLine("[I] Voir les informations sur le titulaire du compte");
@@ -89,8 +106,6 @@ namespace BankApp
         }
         public static void Main(string[] args)
         {
-            Console.WriteLine("Appuyez sur Entrée pour afficher le menu." + pers.ListCompte.Count);
-            string menu = Console.ReadLine();
             Menu();
         }
     }
