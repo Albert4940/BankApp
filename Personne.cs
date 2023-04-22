@@ -52,6 +52,14 @@ namespace BankApp
 			Console.WriteLine("Nom : " + this.Nom + "\nPrenom : " + this.Prenom);
 		}
 	
+		public void RegrouperContenu()
+		{
+			string contenu = "";
+			contenu += this.Nom + " " + this.Prenom + "/n";
+			
+			EcrireFichier.Ecrire(contenu, this.Nom + "_Fichier.txt");
+		}
+
 		public Personne(string nom, string prenom)
 		{
 			this.Nom = nom;

@@ -69,9 +69,9 @@ namespace BankApp
                         RechercherUnCompteParType(pers.ListCompte, "epargne").Retrait();
                     break;
                     case "X":
-                        Console.WriteLine(strChoixMenu);
-                    Environment.Exit(-1);
-                        break;
+                        pers.RegrouperContenu();
+                        Environment.Exit(-1);
+                    break;
                 default:
                     Console.WriteLine("Mauvais choix !");
                 break;
