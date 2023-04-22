@@ -35,41 +35,49 @@ namespace BankApp
                 switch (strChoixMenu)
                 {
                     case "I":
+                    Console.Clear();
                         pers.Afficher();
                     break;
 
                     case "CS":
-                        if(RechercherUnCompteParType(pers.ListCompte, "courant") != null)
+                    Console.Clear();
+                    if (RechercherUnCompteParType(pers.ListCompte, "courant") != null)
                          Console.WriteLine("Solde Compte Courant : " + RechercherUnCompteParType(pers.ListCompte,"courant").Solde);
                                 
                         break;
 
                     case "CD":
-                        if(RechercherUnCompteParType(pers.ListCompte, "courant") != null)
+                    Console.Clear();
+                    if (RechercherUnCompteParType(pers.ListCompte, "courant") != null)
                              RechercherUnCompteParType(pers.ListCompte, "courant").Depot();                            
                         break;
 
                     case "CR":
+                    Console.Clear();
                     if (RechercherUnCompteParType(pers.ListCompte, "courant") != null)
                         RechercherUnCompteParType(pers.ListCompte, "courant").Retrait();
                     break;
 
                     case "ES":
+                    Console.Clear();
                     if (RechercherUnCompteParType(pers.ListCompte, "epargne") != null)
                         Console.WriteLine("Solde Compte Epargne : " + RechercherUnCompteParType(pers.ListCompte, "epargne").Solde);
                     break;
 
                     case "ED":
+                    Console.Clear();
                     if (RechercherUnCompteParType(pers.ListCompte, "epargne") != null)
                         RechercherUnCompteParType(pers.ListCompte, "epargne").Depot();
                         break;
 
                     case "ER":
+                    Console.Clear();
                     if (RechercherUnCompteParType(pers.ListCompte, "epargne") != null)
                         RechercherUnCompteParType(pers.ListCompte, "epargne").Retrait();
                     break;
                     case "X":
-                        EcrireFichier.Ecrire(pers);
+                    Console.Clear();
+                    EcrireFichier.Ecrire(pers);
                         Environment.Exit(-1);
                     break;
                 default:
