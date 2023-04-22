@@ -57,7 +57,7 @@ namespace BankApp
 			string contenu = "";
 			contenu += this.Nom + " " + this.Prenom + "/n";
 			
-			EcrireFichier.Ecrire(contenu, this.Nom + "_Fichier.txt");
+			//EcrireFichier.Ecrire(contenu, this.Nom + "_Fichier.txt");
 		}
 
 		public Personne(string nom, string prenom)

@@ -69,7 +69,7 @@ namespace BankApp
                         RechercherUnCompteParType(pers.ListCompte, "epargne").Retrait();
                     break;
                     case "X":
-                        pers.RegrouperContenu();
+                        EcrireFichier.Ecrire(pers);
                         Environment.Exit(-1);
                     break;
                 default:
