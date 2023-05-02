@@ -1,8 +1,11 @@
 using System;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace BankApp
 {
-	public class Compte
+	[Serializable()]
+	public class Compte : ISerializable
 	{
 		private int numero;
 		private double solde;
@@ -79,6 +82,22 @@ namespace BankApp
 			string solde = Console.ReadLine();
 			return Double.Parse(solde);
 		}
+
+		
+		//Serialization function
+		public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+		{
+			info.AddValue("SoldeCompte",this.Solde);
+			info.AddValue("TypeCompte", this.Type);
+			info.AddValue("ListTransaction", this.ListTransaction);
+		}
+		public Compte(SerializationInfo info, StreamingContext ctxt)
+		{
+
+            this.Solde = (Double)info.GetValue("SoldeCompte", typeof(Double));
+			this.Type = (String)info.GetValue("TypeCompte", typeof(String));
+			this.ListTransaction = (IList<Transaction>)info.GetValue("ListTransaction", typeof(IList<Transaction>));
+        }
 		public Compte(string type, double solde)
 		{
 			this.Solde = solde;

@@ -8,11 +8,19 @@ namespace BankApp
         
         public static Personne InitialisationPersonne()
         {
-            Personne pers = new Personne("Albert", "Mary");
-            IList<Compte> listTemp = pers.ListCompte;
-            listTemp.Add(new Compte("courant", 5000));
-            listTemp.Add(new Compte("epargne", 9000));
-            pers.ListCompte = listTemp;
+            Personne pers = null;
+
+            pers = EcrireLireFichier.LireDeserialize();
+
+            if(pers == null)
+            {
+                pers = new Personne("Albert", "Mary");
+                IList<Compte> listTemp = pers.ListCompte;
+                listTemp.Add(new Compte("courant", 4000));
+                listTemp.Add(new Compte("epargne", 9000));
+                pers.ListCompte = listTemp;
+            }
+               
             return pers; 
         }
 
@@ -77,7 +85,7 @@ namespace BankApp
                     break;
                     case "X":
                     Console.Clear();
-                    EcrireFichier.Ecrire(pers);
+                    EcrireLireFichier.EcrireSerialize(pers);
                         Environment.Exit(-1);
                     break;
                 default:
